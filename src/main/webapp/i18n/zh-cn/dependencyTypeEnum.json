@@ -1,0 +1,10 @@
+{
+  "jDemoApp": {
+    "DependencyTypeEnum": {
+      "null": "",
+      "TASK": "TASK",
+      "FILE": "FILE",
+      "CONTROL": "CONTROL"
+    }
+  }
+}

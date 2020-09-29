@@ -1,0 +1,11 @@
+{
+  "jDemoApp": {
+    "CycleType": {
+      "null": "",
+      "YEAR": "YEAR",
+      "MONTH": "MONTH",
+      "WEEK": "WEEK",
+      "DAY": "DAY"
+    }
+  }
+}

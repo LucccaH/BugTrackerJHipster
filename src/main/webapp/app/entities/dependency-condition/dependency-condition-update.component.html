@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-dependency-condition-heading" jhiTranslate="jDemoApp.dependencyCondition.home.createOrEditLabel">Create or edit a Dependency Condition</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jDemoApp.dependencyCondition.dependencyType" for="field_dependencyType">Dependency Type</label>
+                    <select class="form-control" name="dependencyType" formControlName="dependencyType" id="field_dependencyType">
+                        <option value="TASK">{{ 'jDemoApp.DependencyTypeEnum.TASK' | translate }}</option>
+                        <option value="FILE">{{ 'jDemoApp.DependencyTypeEnum.FILE' | translate }}</option>
+                        <option value="CONTROL">{{ 'jDemoApp.DependencyTypeEnum.CONTROL' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jDemoApp.dependencyCondition.flagFiekdId" for="field_flagFiekdId">Flag Fiekd Id</label>
+                    <input type="text" class="form-control" name="flagFiekdId" id="field_flagFiekdId"
+                           formControlName="flagFiekdId"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jDemoApp.dependencyCondition.assignedTime" for="field_assignedTime">Assigned Time</label>
+                    <div class="input-group">
+                        <input id="field_assignedTime" type="text" class="form-control" name="assignedTime" ngbDatepicker #assignedTimeDp="ngbDatepicker" formControlName="assignedTime"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="assignedTimeDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jDemoApp.dependencyCondition.operator" for="field_operator">Operator</label>
+                    <select class="form-control" name="operator" formControlName="operator" id="field_operator">
+                        <option value="AND">{{ 'jDemoApp.OperatorEnum.AND' | translate }}</option>
+                        <option value="OR">{{ 'jDemoApp.OperatorEnum.OR' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jDemoApp.dependencyCondition.root" for="field_root">Root</label>
+                    <select class="form-control" id="field_root" name="root" formControlName="rootId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dependencyConditionOption.id" *ngFor="let dependencyConditionOption of dependencyconditions; trackBy: trackById">{{ dependencyConditionOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

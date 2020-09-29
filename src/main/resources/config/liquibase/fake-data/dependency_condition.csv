@@ -1,0 +1,11 @@
+id;dependency_type;flag_fiekd_id;assigned_time;operator
+1;FILE;24/7;2020-09-28;OR
+2;CONTROL;deposit Belarus;2020-09-28;OR
+3;CONTROL;Gibraltar Pound;2020-09-28;OR
+4;CONTROL;Quality Money Market Account backing up;2020-09-28;OR
+5;FILE;grey;2020-09-28;AND
+6;TASK;Nicaragua Synergized;2020-09-28;OR
+7;CONTROL;Developer;2020-09-28;AND
+8;FILE;Regional markets;2020-09-28;AND
+9;CONTROL;Gorgeous calculating;2020-09-28;AND
+10;CONTROL;1080p turquoise Soft;2020-09-28;OR

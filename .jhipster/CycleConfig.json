@@ -1,0 +1,44 @@
+{
+  "name": "CycleConfig",
+  "fields": [
+    {
+      "fieldName": "effectiveDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "assignedDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "assignedTime",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "cycleEnum",
+      "fieldType": "CycleType",
+      "fieldValues": "YEAR,MONTH,WEEK,DAY"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "dependencyCondition",
+      "otherEntityRelationshipName": "cycleConfig",
+      "relationshipValidateRules": "required",
+      "relationshipName": "conditionRoot",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20200929012801",
+  "entityTableName": "cycle_config",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

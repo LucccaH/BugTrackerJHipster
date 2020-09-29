@@ -1,0 +1,100 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-task-heading" jhiTranslate="jDemoApp.task.home.createOrEditLabel">Create or edit a Task</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jDemoApp.task.taskVersionId" for="field_taskVersionId">Task Version Id</label>
+                    <input type="number" class="form-control" name="taskVersionId" id="field_taskVersionId"
+                           formControlName="taskVersionId"/>
+                    <div *ngIf="editForm.get('taskVersionId')!.invalid && (editForm.get('taskVersionId')!.dirty || editForm.get('taskVersionId')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('taskVersionId')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('taskVersionId')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jDemoApp.task.taskDetail" for="field_taskDetail">Task Detail</label>
+                    <input type="text" class="form-control" name="taskDetail" id="field_taskDetail"
+                           formControlName="taskDetail"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jDemoApp.task.taskName" for="field_taskName">Task Name</label>
+                    <input type="text" class="form-control" name="taskName" id="field_taskName"
+                           formControlName="taskName"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jDemoApp.task.dataType" for="field_dataType">Data Type</label>
+                    <input type="number" class="form-control" name="dataType" id="field_dataType"
+                           formControlName="dataType"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jDemoApp.task.taskStatusEnum" for="field_taskStatusEnum">Task Status Enum</label>
+                    <select class="form-control" name="taskStatusEnum" formControlName="taskStatusEnum" id="field_taskStatusEnum">
+                        <option value="DONE">{{ 'jDemoApp.TaskStatus.DONE' | translate }}</option>
+                        <option value="PAUSED">{{ 'jDemoApp.TaskStatus.PAUSED' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jDemoApp.task.createTime" for="field_createTime">Create Time</label>
+                    <div class="input-group">
+                        <input id="field_createTime" type="text" class="form-control" name="createTime" ngbDatepicker #createTimeDp="ngbDatepicker" formControlName="createTime"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="createTimeDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jDemoApp.task.alarmConfig" for="field_alarmConfig">Alarm Config</label>
+                    <select class="form-control" id="field_alarmConfig" name="alarmConfig" formControlName="alarmConfigId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="alarmConfigOption.id" *ngFor="let alarmConfigOption of alarmconfigs; trackBy: trackById">{{ alarmConfigOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jDemoApp.task.scheduleConfig" for="field_scheduleConfig">Schedule Config</label>
+                    <select class="form-control" id="field_scheduleConfig" name="scheduleConfig" formControlName="scheduleConfigId">
+                        <option *ngIf="!editForm.get('scheduleConfigId')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="scheduleConfigOption.id" *ngFor="let scheduleConfigOption of scheduleconfigs; trackBy: trackById">{{ scheduleConfigOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('scheduleConfigId')!.invalid && (editForm.get('scheduleConfigId')!.dirty || editForm.get('scheduleConfigId')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('scheduleConfigId')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

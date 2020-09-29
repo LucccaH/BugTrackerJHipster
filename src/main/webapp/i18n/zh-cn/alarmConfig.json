@@ -1,0 +1,23 @@
+{
+  "jDemoApp": {
+    "alarmConfig": {
+      "home": {
+        "title": "Alarm Configs",
+        "createLabel": "创建新 Alarm Config",
+        "createOrEditLabel": "创建或编辑 Alarm Config",
+        "notFound": "No Alarm Configs found"
+      },
+      "created": "Alarm Config {{ param }} 创建成功",
+      "updated": "Alarm Config {{ param }} 更新成功",
+      "deleted": "Alarm Config {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Alarm Config {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Alarm Config"
+      },
+      "alarmMethodb": "Alarm Methodb",
+      "accountInfo": "Account Info"
+    }
+  }
+}

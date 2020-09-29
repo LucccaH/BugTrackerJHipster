@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="task">
+            <h2><span jhiTranslate="jDemoApp.task.detail.title">Task</span> {{ task.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jDemoApp.task.taskVersionId">Task Version Id</span></dt>
+                <dd>
+                    <span>{{ task.taskVersionId }}</span>
+                </dd>
+                <dt><span jhiTranslate="jDemoApp.task.taskDetail">Task Detail</span></dt>
+                <dd>
+                    <span>{{ task.taskDetail }}</span>
+                </dd>
+                <dt><span jhiTranslate="jDemoApp.task.taskName">Task Name</span></dt>
+                <dd>
+                    <span>{{ task.taskName }}</span>
+                </dd>
+                <dt><span jhiTranslate="jDemoApp.task.dataType">Data Type</span></dt>
+                <dd>
+                    <span>{{ task.dataType }}</span>
+                </dd>
+                <dt><span jhiTranslate="jDemoApp.task.taskStatusEnum">Task Status Enum</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'jDemoApp.TaskStatus.' + task.taskStatusEnum }}">{{ task.taskStatusEnum }}</span>
+                </dd>
+                <dt><span jhiTranslate="jDemoApp.task.createTime">Create Time</span></dt>
+                <dd>
+                    <span>{{ task.createTime }}</span>
+                </dd>
+                <dt><span jhiTranslate="jDemoApp.task.alarmConfig">Alarm Config</span></dt>
+                <dd>
+                    <div *ngIf="task.alarmConfigId">
+                        <a [routerLink]="['/alarm-config', task.alarmConfigId, 'view']">{{ task.alarmConfigId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jDemoApp.task.scheduleConfig">Schedule Config</span></dt>
+                <dd>
+                    <div *ngIf="task.scheduleConfigId">
+                        <a [routerLink]="['/schedule-config', task.scheduleConfigId, 'view']">{{ task.scheduleConfigId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/task', task.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

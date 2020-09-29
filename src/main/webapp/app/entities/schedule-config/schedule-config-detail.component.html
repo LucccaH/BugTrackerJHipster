@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="scheduleConfig">
+            <h2><span jhiTranslate="jDemoApp.scheduleConfig.detail.title">Schedule Config</span> {{ scheduleConfig.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jDemoApp.scheduleConfig.privilige">Privilige</span></dt>
+                <dd>
+                    <span>{{ scheduleConfig.privilige }}</span>
+                </dd>
+                <dt><span jhiTranslate="jDemoApp.scheduleConfig.retryTime">Retry Time</span></dt>
+                <dd>
+                    <span>{{ scheduleConfig.retryTime }}</span>
+                </dd>
+                <dt><span jhiTranslate="jDemoApp.scheduleConfig.retryInterval">Retry Interval</span></dt>
+                <dd>
+                    <span>{{ scheduleConfig.retryInterval }}</span>
+                </dd>
+                <dt><span jhiTranslate="jDemoApp.scheduleConfig.scheduleCycleConfig">Schedule Cycle Config</span></dt>
+                <dd>
+                    <div *ngIf="scheduleConfig.scheduleCycleConfigId">
+                        <a [routerLink]="['/cycle-config', scheduleConfig.scheduleCycleConfigId, 'view']">{{ scheduleConfig.scheduleCycleConfigId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/schedule-config', scheduleConfig.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

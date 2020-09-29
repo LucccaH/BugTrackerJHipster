@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="dependencyCondition">
+            <h2><span jhiTranslate="jDemoApp.dependencyCondition.detail.title">Dependency Condition</span> {{ dependencyCondition.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jDemoApp.dependencyCondition.dependencyType">Dependency Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'jDemoApp.DependencyTypeEnum.' + dependencyCondition.dependencyType }}">{{ dependencyCondition.dependencyType }}</span>
+                </dd>
+                <dt><span jhiTranslate="jDemoApp.dependencyCondition.flagFiekdId">Flag Fiekd Id</span></dt>
+                <dd>
+                    <span>{{ dependencyCondition.flagFiekdId }}</span>
+                </dd>
+                <dt><span jhiTranslate="jDemoApp.dependencyCondition.assignedTime">Assigned Time</span></dt>
+                <dd>
+                    <span>{{ dependencyCondition.assignedTime }}</span>
+                </dd>
+                <dt><span jhiTranslate="jDemoApp.dependencyCondition.operator">Operator</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'jDemoApp.OperatorEnum.' + dependencyCondition.operator }}">{{ dependencyCondition.operator }}</span>
+                </dd>
+                <dt><span jhiTranslate="jDemoApp.dependencyCondition.root">Root</span></dt>
+                <dd>
+                    <div *ngIf="dependencyCondition.rootId">
+                        <a [routerLink]="['/dependency-condition', dependencyCondition.rootId, 'view']">{{ dependencyCondition.rootId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/dependency-condition', dependencyCondition.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

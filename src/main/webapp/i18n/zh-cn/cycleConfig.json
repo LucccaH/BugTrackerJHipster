@@ -1,0 +1,26 @@
+{
+  "jDemoApp": {
+    "cycleConfig": {
+      "home": {
+        "title": "Cycle Configs",
+        "createLabel": "创建新 Cycle Config",
+        "createOrEditLabel": "创建或编辑 Cycle Config",
+        "notFound": "No Cycle Configs found"
+      },
+      "created": "Cycle Config {{ param }} 创建成功",
+      "updated": "Cycle Config {{ param }} 更新成功",
+      "deleted": "Cycle Config {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Cycle Config {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Cycle Config"
+      },
+      "effectiveDate": "Effective Date",
+      "assignedDate": "Assigned Date",
+      "assignedTime": "Assigned Time",
+      "cycleEnum": "Cycle Enum",
+      "conditionRoot": "Condition Root"
+    }
+  }
+}

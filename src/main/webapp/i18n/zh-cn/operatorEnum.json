@@ -1,0 +1,9 @@
+{
+  "jDemoApp": {
+    "OperatorEnum": {
+      "null": "",
+      "AND": "AND",
+      "OR": "OR"
+    }
+  }
+}

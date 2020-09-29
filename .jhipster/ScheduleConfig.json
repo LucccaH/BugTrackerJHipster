@@ -1,0 +1,38 @@
+{
+  "name": "ScheduleConfig",
+  "fields": [
+    {
+      "fieldName": "privilige",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "retryTime",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "retryInterval",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "cycleConfig",
+      "otherEntityRelationshipName": "scheduleConfig",
+      "relationshipName": "scheduleCycleConfig",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20200929012701",
+  "entityTableName": "schedule_config",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

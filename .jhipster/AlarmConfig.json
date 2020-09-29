@@ -1,0 +1,25 @@
+{
+  "name": "AlarmConfig",
+  "fields": [
+    {
+      "fieldName": "alarmMethodb",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "accountInfo",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200929012601",
+  "entityTableName": "alarm_config",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

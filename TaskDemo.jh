@@ -1,0 +1,68 @@
+
+
+entity Task {
+	taskVersionId Long required
+	taskDetail String
+    taskName String
+    dataType Integer
+    taskStatusEnum TaskStatus  
+	createTime LocalDate 
+    
+}
+entity AlarmConfig {
+	alarmMethodb String
+    accountInfo String
+}
+
+entity ScheduleConfig {
+	privilige Integer
+    retryTime Integer
+    retryInterval Integer
+}
+
+entity CycleConfig {
+	effectiveDate LocalDate
+    assignedDate LocalDate
+    assignedTime LocalDate
+    cycleEnum CycleType
+}
+entity DependencyCondition {
+	dependencyType DependencyTypeEnum
+    flagFiekdId String
+    assignedTime LocalDate
+    operator OperatorEnum
+}
+enum OperatorEnum {
+	AND, OR 
+}
+enum DependencyTypeEnum {
+	TASK, FILE, CONTROL
+}
+enum TaskStatus {
+    DONE, PAUSED
+}
+enum CycleType {
+	YEAR, MONTH, WEEK, DAY
+}
+
+relationship OneToMany {
+	DependencyCondition to DependencyCondition {root}
+}
+relationship OneToOne {
+	Task {alarmConfig} to AlarmConfig
+    Task {scheduleConfig required} to ScheduleConfig
+    ScheduleConfig {scheduleCycleConfig} to CycleConfig
+    CycleConfig {conditionRoot required} to DependencyCondition
+    
+}
+
+
+// Set pagination options
+paginate Task with infinite-scroll
+paginate Task with pagination
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct except AlarmConfig
+
+// Set service options to all except few
+service all with serviceImpl except AlarmConfig
+

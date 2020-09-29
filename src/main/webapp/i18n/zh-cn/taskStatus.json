@@ -1,0 +1,9 @@
+{
+  "jDemoApp": {
+    "TaskStatus": {
+      "null": "",
+      "DONE": "DONE",
+      "PAUSED": "PAUSED"
+    }
+  }
+}

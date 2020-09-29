@@ -1,0 +1,73 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jDemoApp.cycleConfig.home.title">Cycle Configs</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-cycle-config" [routerLink]="['/cycle-config/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="jDemoApp.cycleConfig.home.createLabel">
+            Create a new Cycle Config
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="cycleConfigs?.length === 0">
+        <span jhiTranslate="jDemoApp.cycleConfig.home.notFound">No cycleConfigs found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="cycleConfigs && cycleConfigs.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="jDemoApp.cycleConfig.effectiveDate">Effective Date</span></th>
+                    <th scope="col" ><span jhiTranslate="jDemoApp.cycleConfig.assignedDate">Assigned Date</span></th>
+                    <th scope="col" ><span jhiTranslate="jDemoApp.cycleConfig.assignedTime">Assigned Time</span></th>
+                    <th scope="col" ><span jhiTranslate="jDemoApp.cycleConfig.cycleEnum">Cycle Enum</span></th>
+                    <th scope="col" ><span jhiTranslate="jDemoApp.cycleConfig.conditionRoot">Condition Root</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cycleConfig of cycleConfigs ;trackBy: trackId">
+                    <td><a [routerLink]="['/cycle-config', cycleConfig.id, 'view']">{{ cycleConfig.id }}</a></td>
+                    <td>{{ cycleConfig.effectiveDate | date:'mediumDate' }}</td>
+                    <td>{{ cycleConfig.assignedDate | date:'mediumDate' }}</td>
+                    <td>{{ cycleConfig.assignedTime | date:'mediumDate' }}</td>
+                    <td jhiTranslate="{{ 'jDemoApp.CycleType.' + cycleConfig.cycleEnum }}">{{ cycleConfig.cycleEnum }}</td>
+                    <td>
+                        <div *ngIf="cycleConfig.conditionRootId">
+                            <a [routerLink]="['/dependency-condition', cycleConfig.conditionRootId , 'view']" >{{ cycleConfig.conditionRootId }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/cycle-config', cycleConfig.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/cycle-config', cycleConfig.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(cycleConfig)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

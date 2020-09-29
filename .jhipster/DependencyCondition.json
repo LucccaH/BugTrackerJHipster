@@ -1,0 +1,49 @@
+{
+  "name": "DependencyCondition",
+  "fields": [
+    {
+      "fieldName": "dependencyType",
+      "fieldType": "DependencyTypeEnum",
+      "fieldValues": "TASK,FILE,CONTROL"
+    },
+    {
+      "fieldName": "flagFiekdId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "assignedTime",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "operator",
+      "fieldType": "OperatorEnum",
+      "fieldValues": "AND,OR"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "dependencyCondition",
+      "otherEntityRelationshipName": "root",
+      "relationshipName": "dependencyCondition"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "dependencyCondition",
+      "otherEntityRelationshipName": "dependencyCondition",
+      "relationshipName": "root",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200929012901",
+  "entityTableName": "dependency_condition",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

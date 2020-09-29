@@ -1,0 +1,61 @@
+{
+  "name": "Task",
+  "fields": [
+    {
+      "fieldName": "taskVersionId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "taskDetail",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "taskName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataType",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "taskStatusEnum",
+      "fieldType": "TaskStatus",
+      "fieldValues": "DONE,PAUSED"
+    },
+    {
+      "fieldName": "createTime",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "alarmConfig",
+      "otherEntityRelationshipName": "task",
+      "relationshipName": "alarmConfig",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "scheduleConfig",
+      "otherEntityRelationshipName": "task",
+      "relationshipValidateRules": "required",
+      "relationshipName": "scheduleConfig",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20200929012501",
+  "entityTableName": "task",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

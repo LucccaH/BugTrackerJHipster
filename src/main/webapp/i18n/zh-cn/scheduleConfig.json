@@ -1,0 +1,25 @@
+{
+  "jDemoApp": {
+    "scheduleConfig": {
+      "home": {
+        "title": "Schedule Configs",
+        "createLabel": "创建新 Schedule Config",
+        "createOrEditLabel": "创建或编辑 Schedule Config",
+        "notFound": "No Schedule Configs found"
+      },
+      "created": "Schedule Config {{ param }} 创建成功",
+      "updated": "Schedule Config {{ param }} 更新成功",
+      "deleted": "Schedule Config {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Schedule Config {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Schedule Config"
+      },
+      "privilige": "Privilige",
+      "retryTime": "Retry Time",
+      "retryInterval": "Retry Interval",
+      "scheduleCycleConfig": "Schedule Cycle Config"
+    }
+  }
+}
